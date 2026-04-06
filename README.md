@@ -90,6 +90,8 @@ Application health
 
 GET /actuator/health
 Project Structure
+
+
  <img width="608" height="685" alt="image" src="https://github.com/user-attachments/assets/edc281cb-a360-4e4c-afd6-a5486d81a49c" />
 
 Running Tests
