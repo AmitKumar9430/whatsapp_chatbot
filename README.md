@@ -78,17 +78,31 @@ Send message
 
 POST /webhook
 
+ <img width="1919" height="1014" alt="Screenshot 2026-04-06 103944" src="https://github.com/user-attachments/assets/248d3f8d-e5c4-4530-803a-a95b91fc7e76" />
+
+
 Get conversation logs
 
 GET /webhook/logs
+
+
+<img width="1919" height="1014" alt="Screenshot 2026-04-06 103944" src="https://github.com/user-attachments/assets/bc6bf763-07d9-4884-8153-58050a1cb7a4" />
+
 
 Health check
 
 GET /webhook/health
 
+<img width="1919" height="1014" alt="Screenshot 2026-04-06 103944" src="https://github.com/user-attachments/assets/616050c1-3a28-4beb-bc4c-ee17a711d0c3" />
+
+
 Application health
 
 GET /actuator/health
+
+<img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/4a23a8f1-1e78-4f04-a0d9-88a578db5cf1" />
+
+
 Project Structure
 
 
