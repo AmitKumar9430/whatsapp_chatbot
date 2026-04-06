@@ -17,7 +17,7 @@ https://whatsapp-chatbot-1-ibjq.onrender.com
 
 ---
 
-## 🧪 How to Test the API
+## How to Test the API
 
 ### What is Postman?
 
@@ -122,7 +122,7 @@ Once installed:
 
 ---
 
-## 💬 All Supported Messages
+##  All Supported Messages
 
 | You send | Bot replies |
 |----------|-------------|
