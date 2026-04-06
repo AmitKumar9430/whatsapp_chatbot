@@ -6,31 +6,50 @@ A simple WhatsApp chatbot backend built using Java and Spring Boot. It exposes a
 
 ##  Live Demo
 
-The project is deployed and live on Render. You can test it right now:
+The project is deployed and live on Render. You can test it right now without running anything locally:
 
 **Base URL:**
 ```
 https://whatsapp-chatbot-1-ibjq.onrender.com
 ```
 
-> First request may take 30-50 seconds to respond because the free instance sleeps after inactivity. After the first request it will be fast.
+>  First request may take 30-50 seconds to respond because the free instance sleeps after inactivity. After the first request it will be fast.
+
+---
+
+## 🧪 How to Test the API
+
+### What is Postman?
+
+Postman is a free tool used to test APIs. It lets you send requests to any API endpoint and see the response — without writing any code.
+
+**Download Postman here:**  https://www.postman.com/downloads/
+
+Once installed:
+1. Open Postman
+2. Click **New → HTTP Request**
+3. Choose the method (GET or POST)
+4. Paste the URL
+5. For POST requests → click **Body → raw → select JSON**
+6. Paste the request body
+7. Click **Send**
 
 ---
 
 ## Test the Live API
 
-### 1. Send a Hi message
-```
-POST https://whatsapp-chatbot-1-ibjq.onrender.com/webhook
-```
-Body:
+### Test 1 — Send a Hi message
+
+- **Method:** `POST`
+- **URL:** `https://whatsapp-chatbot-1-ibjq.onrender.com/webhook`
+- **Body (raw JSON):**
 ```json
 {
   "from": "919876543210",
   "message": "Hi"
 }
 ```
-Expected response:
+- **Expected response:**
 ```json
 {
   "to": "919876543210",
@@ -39,21 +58,22 @@ Expected response:
   "status": "sent"
 }
 ```
+ <img width="1919" height="1023" alt="image" src="https://github.com/user-attachments/assets/74df29cd-8a95-4841-b05e-282cb47e3e3b" />
 
 ---
 
-### 2. Send a Bye message
-```
-POST https://whatsapp-chatbot-1-ibjq.onrender.com/webhook
-```
-Body:
+### Test 2 — Send a Bye message
+
+- **Method:** `POST`
+- **URL:** `https://whatsapp-chatbot-1-ibjq.onrender.com/webhook`
+- **Body (raw JSON):**
 ```json
 {
   "from": "919876543210",
   "message": "Bye"
 }
 ```
-Expected response:
+- **Expected response:**
 ```json
 {
   "to": "919876543210",
@@ -63,20 +83,26 @@ Expected response:
 }
 ```
 
----
+<img width="1916" height="1016" alt="Screenshot 2026-04-06 122739" src="https://github.com/user-attachments/assets/222987c6-ef4e-47db-baea-9d8be7242bc0" />
 
-### 3. View all conversation logs
-```
-GET https://whatsapp-chatbot-1-ibjq.onrender.com/webhook/logs
-```
 
 ---
 
-### 4. Health check
-```
-GET https://whatsapp-chatbot-1-ibjq.onrender.com/webhook/health
-```
-Expected response:
+### Test 3 — View all conversation logs
+
+- **Method:** `GET`
+- **URL:** `https://whatsapp-chatbot-1-ibjq.onrender.com/webhook/logs`
+- No body needed — just hit Send
+
+<img width="1919" height="1014" alt="Webhook logs" src="https://github.com/user-attachments/assets/616050c1-3a28-4beb-bc4c-ee17a711d0c3" />
+
+---
+
+### Test 4 — Health check
+
+- **Method:** `GET`
+- **URL:** `https://whatsapp-chatbot-1-ibjq.onrender.com/webhook/health`
+- **Expected response:**
 ```json
 {
   "service": "WhatsApp Chatbot Backend",
@@ -87,10 +113,27 @@ Expected response:
 
 ---
 
-### 5. Full system health
-```
-GET https://whatsapp-chatbot-1-ibjq.onrender.com/actuator/health
-```
+### Test 5 — Full system health
+
+- **Method:** `GET`
+- **URL:** `https://whatsapp-chatbot-1-ibjq.onrender.com/actuator/health`
+
+<img width="1919" height="1019" alt="Actuator health" src="https://github.com/user-attachments/assets/4a23a8f1-1e78-4f04-a0d9-88a578db5cf1" />
+
+---
+
+## 💬 All Supported Messages
+
+| You send | Bot replies |
+|----------|-------------|
+| Hi / Hello / Hey | Hello! How can I assist you today? |
+| Bye / Goodbye | Goodbye! Have a wonderful day! |
+| How are you | I'm doing great, thanks for asking! |
+| Help | Lists all available commands |
+| About | Information about the bot |
+| Hours / Timing | Business hours information |
+| Thank you | You're welcome! |
+| Anything else | Friendly fallback message |
 
 ---
 
@@ -103,18 +146,6 @@ The focus was on:
 - Proper REST API design
 - Logging every conversation
 - Simple but extensible reply logic
-
----
-
-## What it does
-
-- Accepts incoming messages via a REST API
-- Sends automatic replies based on keywords
-- Logs every message with a timestamp and unique ID
-- Lets you retrieve full conversation history
-- Has health check endpoints for monitoring
-- Handles messages case-insensitively
-- Returns a friendly fallback for anything it doesn't understand
 
 ---
 
@@ -139,36 +170,13 @@ mvn spring-boot:run
 
 Server starts at `http://localhost:8080`
 
----
-
-## Supported messages
-
-| You send | Bot replies |
-|----------|-------------|
-| Hi / Hello / Hey | Hello! How can I assist you today? |
-| Bye / Goodbye | Goodbye! Have a wonderful day! |
-| How are you | I'm doing great, thanks for asking! |
-| Help | Lists all available commands |
-| About | Information about the bot |
-| Hours / Timing | Business hours information |
-| Thank you | You're welcome! |
-| Anything else | Friendly fallback message |
-
----
-
-## Screenshots
-
-### POST /webhook → Hi
-<img width="1919" height="1014" alt="Hi message test" src="https://github.com/user-attachments/assets/248d3f8d-e5c4-4530-803a-a95b91fc7e76" />
-
-### POST /webhook → Bye
-<img width="1919" height="1014" alt="Bye message test" src="https://github.com/user-attachments/assets/bc6bf763-07d9-4884-8153-58050a1cb7a4" />
-
-### GET /webhook/logs
-<img width="1919" height="1014" alt="Webhook logs" src="https://github.com/user-attachments/assets/616050c1-3a28-4beb-bc4c-ee17a711d0c3" />
-
-### GET /actuator/health
-<img width="1919" height="1019" alt="Actuator health" src="https://github.com/user-attachments/assets/4a23a8f1-1e78-4f04-a0d9-88a578db5cf1" />
+Then test locally in Postman using:
+```
+POST http://localhost:8080/webhook
+GET  http://localhost:8080/webhook/logs
+GET  http://localhost:8080/webhook/health
+GET  http://localhost:8080/actuator/health
+```
 
 ---
 
